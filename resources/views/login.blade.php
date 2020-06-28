@@ -33,14 +33,14 @@
         <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('{{ URL::asset('assets/media/bg/bg-3.jpg')}}');">
             <div class="login-form text-center p-7 position-relative overflow-hidden">
                 <!--begin::Login Header-->
-                <div class="d-flex flex-center mb-15 mt-30">
+                <div class="d-flex flex-center mb-15">
                     <a href="#">
-                        <img src="{{ URL::asset('assets/media/icon/slalom.png')}}" class="max-h-225px" alt="" />
+                        <img src="{{ URL::asset('assets/media/icon/slalom.png')}}" class="max-h-200px" alt="" />
                     </a>
                 </div>
                 <!--end::Login Header-->
                 <!--begin::Login Sign in form-->
-                <div class="login-signin mb-30">
+                <div class="login-signin">
                     <div class="mb-13">
                         <h3>登入場地預約系統</h3>
                         <div class="text-muted font-weight-bold">為您的選手進行移地訓練，保持最佳狀態</div>
@@ -69,7 +69,7 @@
                 </div>
                 <!--end::Login Sign in form-->
                 <!--begin::Login Sign up form-->
-                <div class="login-signup mb-30">
+                <div class="login-signup">
                     <div class="mb-13">
                         <h3>註冊</h3>
                         <div class="text-muted font-weight-bold">建立一個帳號替您的選手登記移地訓練時段</div>
