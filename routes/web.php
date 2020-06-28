@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index');
 Route::get('/checkIn/{userId}', 'CheckInController@checkIn');
-Route::get('/login', 'LoginController@login');
+Route::get('login', ['as' => 'login', 'uses' => 'LoginController@login']);
 
 //Route::get('/', function () {
 //    return view('welcome');
