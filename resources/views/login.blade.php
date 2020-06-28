@@ -40,7 +40,7 @@
                 </div>
                 <!--end::Login Header-->
                 <!--begin::Login Sign in form-->
-                <div class="login-signin">
+                <div class="login-signin mb-30">
                     <div class="mb-13">
                         <h3>登入場地預約系統</h3>
                         <div class="text-muted font-weight-bold">為您的選手進行移地訓練，保持最佳狀態</div>
@@ -69,7 +69,7 @@
                 </div>
                 <!--end::Login Sign in form-->
                 <!--begin::Login Sign up form-->
-                <div class="login-signup">
+                <div class="login-signup mb-30">
                     <div class="mb-13">
                         <h3>註冊</h3>
                         <div class="text-muted font-weight-bold">建立一個帳號替您的選手登記移地訓練時段</div>
@@ -92,7 +92,7 @@
                 </div>
                 <!--end::Login Sign up form-->
                 <!--begin::Login forgot password form-->
-                <div class="login-forgot">
+                <div class="login-forgot mb-30">
                     <div class="mb-10">
                         <h3>忘記登入資訊嗎？</h3>
                         <div class="text-muted font-weight-bold mt-5">請洽曾大宇教練協助查詢登入資訊</div>
