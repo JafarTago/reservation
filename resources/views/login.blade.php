@@ -33,7 +33,7 @@
         <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('{{ URL::asset('assets/media/bg/bg-3.jpg')}}');">
             <div class="login-form text-center p-7 position-relative overflow-hidden">
                 <!--begin::Login Header-->
-                <div class="d-flex flex-center mb-15">
+                <div class="d-flex flex-center mb-15 mt-30">
                     <a href="#">
                         <img src="{{ URL::asset('assets/media/icon/slalom.png')}}" class="max-h-225px" alt="" />
                     </a>
