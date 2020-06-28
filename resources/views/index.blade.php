@@ -8,17 +8,17 @@
     <meta name="description" content="Updates and statistics"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
-    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css?v=7.0.5" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/global/plugins.bundle.css?v=7.0.5" rel="stylesheet" type="text/css"/>
-    <link href="assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.5" rel="stylesheet" type="text/css"/>
-    <link href="assets/css/style.bundle.css?v=7.0.5" rel="stylesheet" type="text/css"/>
-    <link rel="shortcut icon" href="assets/media/icon/slalom.png"/>
+    <link href="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css?v=7.0.5') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ URL::asset('assets/plugins/global/plugins.bundle.css?v=7.0.5') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ URL::asset('assets/plugins/custom/prismjs/prismjs.bundle.css?v=7.0.5') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ URL::asset('assets/css/style.bundle.css?v=7.0.5') }}" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="{{ URL::asset('assets/media/icon/slalom.png') }}"/>
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
 <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
     <a href="index.html">
-        {{--        <img alt="Logo" src="assets/media/logos/logo-letter-9.png" class="max-h-30px"/>--}}
-        <img alt="Logo" src="assets/media/icon/slalom.png" class="max-h-40px"/>
+
+        <img alt="Logo" src="{{ URL::asset('assets/media/icon/slalom.png') }}" class="max-h-40px"/>
     </a>
     <div class="d-flex align-items-center">
         {{--        漢堡--}}
@@ -29,7 +29,7 @@
         {{--        拿掉 kt_header_mobile_topbar_toggle 就不的出現往下滑的動作--}}
         <button class="btn p-0 ml-2" onclick="login()">
 					<span class="svg-icon svg-icon-xl">
-						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<polygon points="0 0 24 0 24 24 0 24"></polygon>
@@ -54,8 +54,8 @@
 
                         <div class="d-none d-lg-flex align-items-center mr-3">
                             <a href="index.html" class="mr-20">
-                                {{--                                <img alt="Logo" src="assets/media/logos/logo-letter-9.png" class="max-h-35px"/>--}}
-                                <img alt="Logo" src="assets/media/img/2018LOGO-外框-02.png" class="max-h-55px"/>
+
+                                <img alt="Logo" src="{{ URL::asset('assets/media/img/2018LOGO-外框-02.png') }}" class="max-h-55px"/>
                             </a>
                             <ul class="header-tabs nav align-self-end font-size-lg" role="tablist">
                                 <li class="nav-item">
@@ -278,11 +278,11 @@
 </div>
 
 
-<script src="assets/plugins/global/plugins.bundle.js?v=7.0.5"></script>
-<script src="assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5"></script>
-<script src="assets/js/scripts.bundle.js?v=7.0.5"></script>
-<script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5"></script>
-<script src="assets/js/pages/widgets.js?v=7.0.5"></script>
+<script src="{{ URL::asset('assets/plugins/global/plugins.bundle.js?v=7.0.5') }}"></script>
+<script src="{{ URL::asset('assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5') }}"></script>
+<script src="{{ URL::asset('assets/js/scripts.bundle.js?v=7.0.5') }}"></script>
+<script src="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5') }}"></script>
+<script src="{{ URL::asset('assets/js/pages/widgets.js?v=7.0.5') }}"></script>
 
 <script>
 
