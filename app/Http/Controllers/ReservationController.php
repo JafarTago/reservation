@@ -13,6 +13,7 @@ class ReservationController extends Controller
             return redirect('login');
         }
 //dd($request->reservationTime);
+        dd(auth()->user());
         dd(Time::where('time', $request->reservationTime)->get());
         if (Time::where('time', $request->reservationTime)->first()->user_id) {
             return back()->with(['error' => '此時段已被預約']);
