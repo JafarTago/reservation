@@ -135,6 +135,12 @@
                     <div class="container">
                         <div class="row ">
 
+                            @if (session('error'))
+                                <div class="col-xl-12 alert alert-danger " >
+                                    <h4 class="alert-heading">您慢了一步！</h4>
+                                    <p>這個時段已被搶先，請重新預約！</p>
+                                </div>
+                            @endif
                             <div class="col-xl-12">
                                 <div class="card card-custom card-stretch gutter-b" style="background-color: #22B9FF">
                                     <div class="card-header align-items-center border-0 mt-4">
@@ -144,13 +150,14 @@
                                             @else
                                                 <h1 class="text-white text-center mb-7">Hi {{ $userInfo->team_name }}！</h1>
                                                 @if (is_null($userInfo->reservation))
+                                                    <h5 class="text-white text-center my-lg-5">您還未預約時段，直接點擊下列時段可進行預約</h5>
                                                 @else
                                                     <h5 class="text-white text-center my-lg-5">您預約的時段為</h5>
                                                     <h5 class="text-white text-center mb-8">{{ $userInfo->reservation->time }}</h5>
-                                                    <img class="" style="display:block; margin:auto;" src="https://qrcode.kaywa.com/img.php?s=8&d=I%20love%20Processing%21%21%21">
-                                                    <h6 class="text-white text-center mt-8"> - 入場時請出示 QRcode 掃福入場 - </h6>
+                                                    <input type="hidden" id="reservationTimeHidden" value="{{ $userInfo->reservation->time }}">
+                                                    <img class="" style="display:block; margin:auto;" src='https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=H&chl={{ $reservationInfo }}'/>
+                                                    <h6 class="text-white text-center mt-8"> - 入場時請出示 QRcode 掃描入場 - </h6>
                                                     <h6 class="text-white text-center"> - 祝您比賽勇奪佳績 - </h6>
-                                                    <a href="{{ route('checkIn',auth()->user()->id)}}">checkIn</a>
                                                 @endif
                                             @endif
                                         </div>
@@ -186,7 +193,9 @@
                                                             </span>
                                                         </div>
                                                     @else
-                                                        <div class="timeline-content font-weight-mormal font-size-lg text-muted pl-3">預約</div>
+                                                        <div class="reservation-text timeline-content font-weight-mormal font-size-lg text-muted pl-3">預約
+                                                            <input type="hidden" value="{{ $d1->time }}">
+                                                        </div>
                                                     @endif
                                                 </div>
                                             @endforeach
@@ -213,7 +222,7 @@
                                                         {{ date('H:i',strtotime($d2->time)) }}
                                                     </div>
                                                     <div class="timeline-badge">
-                                                        <i class="fa fa-genderless {{ is_null($d1->user) ? 'text-success' : 'text-danger' }} icon-xl"></i>
+                                                        <i class="fa fa-genderless {{ is_null($d2->user) ? 'text-success' : 'text-danger' }} icon-xl"></i>
                                                     </div>
                                                     @if (isset($d2->user->team_name))
                                                         <div class="timeline-content d-flex">
@@ -222,7 +231,9 @@
                                                             </span>
                                                         </div>
                                                     @else
-                                                        <div class="timeline-content font-weight-mormal font-size-lg text-muted pl-3">預約</div>
+                                                        <div class="reservation-text timeline-content font-weight-mormal font-size-lg text-muted pl-3">預約
+                                                            <input type="hidden" value="{{ $d2->time }}">
+                                                        </div>
                                                     @endif
                                                 </div>
                                             @endforeach
@@ -258,10 +269,13 @@
                                                             </span>
                                                         </div>
                                                     @else
-                                                        <div class="timeline-content font-weight-mormal font-size-lg text-muted pl-3">預約</div>
+                                                        <div class="reservation-text timeline-content font-weight-mormal font-size-lg text-muted pl-3">預約
+                                                            <input type="hidden" value="{{ $d3->time }}">
+                                                        </div>
                                                     @endif
                                                 </div>
-                                            @endforeach</div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -284,18 +298,56 @@
     </div>
 </div>
 
+<form id="reservationForm" action="{{ route('reservation') }}" method="POST">
+    @csrf
+    <input type="hidden" id="reservationTime" name="reservationTime">
+</form>
 
 <script src="{{ URL::asset('assets/plugins/global/plugins.bundle.js?v=7.0.5') }}"></script>
 <script src="{{ URL::asset('assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5') }}"></script>
-{{--<script src="{{ URL::asset('assets/js/scripts.bundle.js?v=7.0.5') }}"></script>--}}
-{{--<script src="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5') }}"></script>--}}
-{{--<script src="{{ URL::asset('assets/js/pages/widgets.js?v=7.0.5') }}"></script>--}}
-
 <script>
 
     function login() {
         window.location.href = './login';
     }
+
+    $('.reservation-text').on('click', function (e) {
+        e.preventDefault();
+
+        var reservationTime = $(this).find('input').val();
+        var text = "確定預約「"+reservationTime+"」？";
+
+        if ($("#reservationTimeHidden").val() !== '') {
+            text += "<br>原先預約的時段將會替您取消";
+        }
+
+        swal.fire({
+            html: text,
+            icon: "question",
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: '確定',
+            cancelButtonText: '取消',
+            customClass: {
+                confirmButton: "btn font-weight-bold btn-light-primary",
+                cancelButton: "btn font-weight-bold  btn-light-danger"
+
+            },
+        }).then(function (result) {
+            if (result.value) {
+                $("#reservationTime").val(reservationTime);
+                Swal.fire(
+                    '預約成功！',
+                    '請於入場時出示預約畫面',
+                    'success'
+                ).then(function() {
+                    $("#reservationForm").submit();
+                })
+
+            }
+        });
+    });
 
 </script>
 </body>
