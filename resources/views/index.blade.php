@@ -136,7 +136,7 @@
                         <div class="row ">
 
                             @if (session('error'))
-                                <div class="col-xl-12 alert alert-danger " >
+                                <div class="col-xl-12 alert alert-danger ">
                                     <h4 class="alert-heading">您慢了一步！</h4>
                                     <p>這個時段已被搶先，請重新預約！</p>
                                 </div>
@@ -315,7 +315,7 @@
         e.preventDefault();
 
         var reservationTime = $(this).find('input').val();
-        var text = "確定預約「"+reservationTime+"」？";
+        var text = "確定預約「" + reservationTime + "」？";
 
         if ($("#reservationTimeHidden").val() !== '') {
             text += "<br>原先預約的時段將會替您取消";
@@ -335,17 +335,8 @@
 
             },
         }).then(function (result) {
-            if (result.value) {
-                $("#reservationTime").val(reservationTime);
-                Swal.fire(
-                    '預約成功！',
-                    '請於入場時出示預約畫面',
-                    'success'
-                ).then(function() {
-                    $("#reservationForm").submit();
-                })
-
-            }
+            $("#reservationTime").val(reservationTime);
+            $("#reservationForm").submit();
         });
     });
 
