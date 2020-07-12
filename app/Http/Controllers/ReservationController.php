@@ -16,8 +16,8 @@ class ReservationController extends Controller
         if (Time::where('time', $request->reservationTime)->first()->user_id) {
             return back()->with(['error' => '此時段已被預約']);
         } else {
-            Time::where('user_id', auth()->user()->id)->update(['user_id' => null]);
-            Time::where('time', $request->reservationTime)->update(['user_id' => auth()->user()->id]);
+//            Time::where('user_id', auth()->user()->id)->update(['user_id' => null]);
+//            Time::where('time', $request->reservationTime)->update(['user_id' => auth()->user()->id]);
 
             return redirect('/');
         }
