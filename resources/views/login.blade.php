@@ -44,8 +44,14 @@
                     <div class="mb-13">
                         <h3>登入場地預約系統</h3>
                         <div class="text-muted font-weight-bold">為您的選手進行移地訓練，保持最佳狀態</div>
+
+
                     </div>
-                    <form class="form" id="kt_login_signin_form">
+                    @if (session('error'))
+                        <p class="text-danger">{{ session('error') }}</p>
+                    @endif
+                    <form class="form" id="kt_login_signin_form" action="{{ route('login') }}" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-group mb-5">
                             <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="手機號碼" name="account" autocomplete="off" />
                         </div>
@@ -74,9 +80,10 @@
                         <h3>註冊</h3>
                         <div class="text-muted font-weight-bold">建立一個帳號替您的選手登記移地訓練時段</div>
                     </div>
-                    <form class="form" id="kt_login_signup_form">
+                    <form class="form" id="kt_login_signup_form" action="{{ route('register') }}" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-group mb-5">
-                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="手機號碼" name="account" required/>
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="手機號碼（純數字）" name="account" maxlength="10" required/>
                         </div>
                         <div class="form-group mb-5">
                             <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="密碼" name="password" required />
@@ -85,7 +92,7 @@
                             <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="單位名稱" name="team_name"  required/>
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
-                            <button id="kt_login_signup_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">註冊</button>
+                            <button id="" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">註冊</button>
                             <button id="kt_login_signup_cancel" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">取消</button>
                         </div>
                     </form>

@@ -54,17 +54,18 @@ var KTLogin = function() {
 
             validation.validate().then(function(status) {
 		        if (status == 'Valid') {
-                    swal.fire({
-		                text: "註冊成功！",
-		                icon: "success",
-		                buttonsStyling: false,
-		                confirmButtonText: "Ok, got it!",
-                        customClass: {
-    						confirmButton: "btn font-weight-bold btn-light-primary"
-    					}
-		            }).then(function() {
-						KTUtil.scrollTop();
-					});
+                    // swal.fire({
+		            //     text: "註冊成功！",
+		            //     icon: "success",
+		            //     buttonsStyling: false,
+		            //     confirmButtonText: "Ok, got it!",
+                    //     customClass: {
+    				// 		confirmButton: "btn font-weight-bold btn-light-primary"
+    				// 	}
+		            // }).then(function() {
+					// 	KTUtil.scrollTop();
+					// });
+                    $('#kt_login_signin_form').submit();
 				} else {
 					swal.fire({
 		                text: "帳號密碼不正確，請重新輸入",
@@ -174,6 +175,7 @@ var KTLogin = function() {
 
             validation.validate().then(function(status) {
 		        if (status == 'Valid') {
+		            // console.log('register accuess');
                     swal.fire({
 		                text: "註冊成功！",
 		                icon: "success",

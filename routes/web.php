@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'IndexController@index');
-Route::get('/checkIn/{userId}', 'CheckInController@checkIn');
-Route::get('login', ['as' => 'login', 'uses' => 'LoginController@login']);
+Route::get('/checkIn/{userId}', ['as' => 'checkIn', 'uses' => 'CheckInController@checkIn']);
+Route::get('login', ['as' => 'login', 'uses' => 'AuthController@login']);
+Route::post('login', ['as' => 'login', 'uses' => 'AuthController@login']);
+Route::post('register', ['as' => 'register', 'uses' => 'AuthController@register']);
 
 //Route::get('/', function () {
 //    return view('welcome');

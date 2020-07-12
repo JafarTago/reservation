@@ -139,13 +139,20 @@
                                 <div class="card card-custom card-stretch gutter-b" style="background-color: #22B9FF">
                                     <div class="card-header align-items-center border-0 mt-4">
                                         <div class="card-body ">
-                                            {{--                                <h3 class="7 text-white text-center my-10 my-lg-15">你還沒有預約練習場，快來預約吧！</h3>--}}
-                                            <h1 class="text-white text-center mb-7">Hi 呱吉隊！</h1>
-                                            <h5 class="text-white text-center my-lg-5">您預約的時段為</h5>
-                                            <h5 class="text-white text-center mb-8">2020-08-10 08:00:00</h5>
-                                            <img class="" style="display:block; margin:auto;" src="https://qrcode.kaywa.com/img.php?s=8&d=I%20love%20Processing%21%21%21">
-                                            <h6 class="text-white text-center mt-8"> - 入場時請出示 QRcode 掃福入場 - </h6>
-                                            <h6 class="text-white text-center"> - 祝您比賽勇奪佳績 - </h6>
+                                            @if (is_null(auth()->user()))
+                                                <h3 class="text-white text-center mb-7">Hi！需要預約練習時段嗎？請 <a href="{{ route('login') }}" class="text-dark">登入</a> 進行預約</h3>
+                                            @else
+                                                <h1 class="text-white text-center mb-7">Hi {{ $userInfo->team_name }}！</h1>
+                                                @if (is_null($userInfo->reservation))
+                                                @else
+                                                    <h5 class="text-white text-center my-lg-5">您預約的時段為</h5>
+                                                    <h5 class="text-white text-center mb-8">{{ $userInfo->reservation->time }}</h5>
+                                                    <img class="" style="display:block; margin:auto;" src="https://qrcode.kaywa.com/img.php?s=8&d=I%20love%20Processing%21%21%21">
+                                                    <h6 class="text-white text-center mt-8"> - 入場時請出示 QRcode 掃福入場 - </h6>
+                                                    <h6 class="text-white text-center"> - 祝您比賽勇奪佳績 - </h6>
+                                                    <a href="{{ route('checkIn',auth()->user()->id)}}">checkIn</a>
+                                                @endif
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -280,9 +287,9 @@
 
 <script src="{{ URL::asset('assets/plugins/global/plugins.bundle.js?v=7.0.5') }}"></script>
 <script src="{{ URL::asset('assets/plugins/custom/prismjs/prismjs.bundle.js?v=7.0.5') }}"></script>
-<script src="{{ URL::asset('assets/js/scripts.bundle.js?v=7.0.5') }}"></script>
-<script src="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5') }}"></script>
-<script src="{{ URL::asset('assets/js/pages/widgets.js?v=7.0.5') }}"></script>
+{{--<script src="{{ URL::asset('assets/js/scripts.bundle.js?v=7.0.5') }}"></script>--}}
+{{--<script src="{{ URL::asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js?v=7.0.5') }}"></script>--}}
+{{--<script src="{{ URL::asset('assets/js/pages/widgets.js?v=7.0.5') }}"></script>--}}
 
 <script>
 
