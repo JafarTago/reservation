@@ -34,7 +34,7 @@
             <div class="login-form text-center p-7 position-relative overflow-hidden">
                 <!--begin::Login Header-->
                 <div class="d-flex flex-center mb-15">
-                    <a href="#">
+                    <a>
                         <img src="{{ URL::asset('assets/media/icon/slalom.png')}}" class="max-h-200px" alt="" />
                     </a>
                 </div>

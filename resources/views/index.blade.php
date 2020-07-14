@@ -53,7 +53,7 @@
                     <div class="container">
 
                         <div class="d-none d-lg-flex align-items-center mr-3">
-                            <a href="index.html" class="mr-20">
+                            <a class="mr-20">
 
                                 <img alt="Logo" src="{{ URL::asset('assets/media/img/2018LOGO-外框-02.png') }}" class="max-h-55px"/>
                             </a>
@@ -290,7 +290,7 @@
                 <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-muted font-weight-bold mr-2">Copyright 2020©</span>
-                        <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">宇犬多媒體形象工作室</a>
+                        <a class="text-dark-75 text-hover-primary">宇犬多媒體形象工作室</a>
                     </div>
                 </div>
             </div>
